@@ -36,6 +36,17 @@ if ($user) {
   try {
     // Proceed knowing you have a logged in user who's authenticated.
     $user_profile = $facebook->api('/me');
+	$me = $facebook->api('/me/friends');   // access all the information of friends
+
+// $me has the JSON detail of all the facebook friends of the current user 
+
+echo " Friends collage";
+foreach($me['data'] as $frns)
+{
+// Display the picture of friends one by one
+echo "<img title="\"".$frns['name']."\"/" src="\" alt="">";
+
+}
   } catch (FacebookApiException $e) {
     error_log($e);
     $user = null;
@@ -49,8 +60,7 @@ if ($user) {
   $loginUrl = $facebook->getLoginUrl();
 }
 
-// This call will always work since we are fetching public data.
-$naitik = $facebook->api('/naitik');
+
 
 ?>
 <!doctype html>
