@@ -94,7 +94,7 @@ if ($user) {
     <h3>Welcome to Split Even</h3>
     
     <?php if ($user): ?>
-      <h3><?php echo $user['name']; ?></h3>
+      <h3><?php echo $user; ?></h3>
       <img src="https://graph.facebook.com/<?php echo $user; ?>/picture">
     <?php else: ?>
       <strong><em>You are not Connected.</em></strong>
