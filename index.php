@@ -56,7 +56,7 @@ $naitik = $facebook->api('/naitik');
 <!doctype html>
 <html xmlns:fb="http://www.facebook.com/2008/fbml">
   <head>
-    <title>php-sdk</title>
+    <title>SplitEven</title>
     <style>
       body {
         font-family: 'Lucida Grande', Verdana, Arial, sans-serif;
@@ -71,7 +71,24 @@ $naitik = $facebook->api('/naitik');
     </style>
   </head>
   <body>
-    <h1>php-sdk</h1>
+     <script src="http://connect.facebook.net/en_US/all.js"></script>
+     <script type="text/javascript">
+  	 FB.init({
+    		appId  : 'APP ID',
+  	    });
+
+  	 function echoSize() {
+    	      document.getElementById('output').innerHTML = 
+                 "HTML Content Width: " + window.innerWidth + 
+                 " Height: " + window.innerHeight;
+    	      console.log(window.innerWidth + ' x ' + window.innerHeight);
+  	    }
+
+	   echoSize();
+  	   window.onresize = echoSize;
+     </script>
+	
+	<h1>SplitEven</h1>
 
     <?php if ($user): ?>
       <a href="<?php echo $logoutUrl; ?>">Logout</a>
@@ -82,21 +99,13 @@ $naitik = $facebook->api('/naitik');
       </div>
     <?php endif ?>
 
-    <h3>PHP Session</h3>
-    <pre><?php print_r($_SESSION); ?></pre>
-
+    <h3>Welcome to Split Even</h3>
+    
     <?php if ($user): ?>
-      <h3>You</h3>
+      <h3><?php echo $user['name']; ?></h3>
       <img src="https://graph.facebook.com/<?php echo $user; ?>/picture">
-
-      <h3>Your User Object (/me)</h3>
-      <pre><?php print_r($user_profile); ?></pre>
     <?php else: ?>
       <strong><em>You are not Connected.</em></strong>
     <?php endif ?>
-
-    <h3>Public profile of Naitik</h3>
-    <img src="https://graph.facebook.com/naitik/picture">
-    <?php echo $naitik['name']; ?>
   </body>
 </html>
