@@ -95,9 +95,20 @@ if ($user) {
     <h3>Welcome to Split Even</h3>
     
     <?php if ($user): ?>
-      <h3>You are <?php echo $user_profile['name']; ?> and you have <?php echo sizeof($me['data']) ?> friends </h3>
+      <h3>You are <?php echo $user_profile['name']; ?> and you have <?php echo sizeof($friends['data']) ?> friends </h3>
+	  
       <img src="https://graph.facebook.com/<?php echo $user; ?>/picture">
-    <?php else: ?>
+    <div>
+	<h3> Your friends in a collage </h3>
+	<?php 
+	foreach($friends['data'] as $frns)
+	{
+	echo "<img src="\"https://graph.facebook.com/".$frns['id']."/picture\"" title="\"".$frns['name']."\"/">";
+	}
+	?>
+	</div>
+	
+	<?php else: ?>
       <strong><em>You are not Connected.</em></strong>
     <?php endif ?>
 	<?php if ($user): ?>
