@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:fb="http://www.facebook.com/2008/fbml">
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-        <title>IFrame Base Facebook Application Development Updated. Using PHP SDK 3.0 | Thinkdiff.net</title>
+        <title>Welcome to SplitEven</title>
         <link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css" rel="stylesheet" type="text/css"/>
         <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js"></script>
         <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script>
@@ -76,7 +76,7 @@
                 }); */
             }
             function publishStream(){
-                streamPublish("Stream Publish", 'Thinkdiff.net is simply awesome. I just learned how to develop Iframe+Jquery+Ajax base facebook application development using php sdk 3.0. ', 'Checkout the Tutorial', 'http://wp.me/pr3EW-sv', "Demo Facebook Application Tutorial");
+                streamPublish("Stream Publish", 'Now Split bills easily among your friends here on Facebook ', 'Check it out',"SplitEven");
             }
             function increaseIframeSize(w,h){
                 var obj =   new Object;
@@ -84,6 +84,16 @@
                 obj.height=h;
                 FB.Canvas.setSize(obj);
             }
+			
+		    function echoSize() {
+				document.getElementById('output').innerHTML = 
+                "HTML Content Width: " + window.innerWidth + 
+                " Height: " + window.innerHeight;
+				console.log(window.innerWidth + ' x ' + window.innerHeight);
+				}
+			echoSize();
+			window.onresize = echoSize;
+
 
             function newInvite(){
                  var receiverUserIds = FB.ui({ 
@@ -113,9 +123,8 @@
    <a href="http://ithinkdiff.net" target="_blank" style="text-decoration: none;">
        <img src="http://ftechdb.com/ithinkdiff.net-banner.jpg" style="border:none" alt="Download iPhone/iPad Dictionaries, Applications & Games" height="92" />
    </a>
-    <h3>IFrame Base Facebook Application Development | Thinkdiff.net</h3>
-    <a href="http://wp.me/pr3EW-sv" target="_blank">Tutorial: How to develop iframe base facebook application</a> <br /><br />
-
+    <h3>SplitEven</h3>
+    
     <a href="<?=$fbconfig['appBaseUrl']?>" target="_top">Home</a> |
     <a href="#" onclick="newInvite(); return false;">Send Request/Send Invitation</a>
 
