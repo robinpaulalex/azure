@@ -90,22 +90,23 @@ $naitik = $facebook->api('/naitik');
 	
 	<h1>SplitEven</h1>
 
+    
+
+    <h3>Welcome to Split Even</h3>
+    
     <?php if ($user): ?>
+      <h3><?php echo $user['username']; ?></h3>
+      <img src="https://graph.facebook.com/<?php echo $user; ?>/picture">
+    <?php else: ?>
+      <strong><em>You are not Connected.</em></strong>
+    <?php endif ?>
+	<?php if ($user): ?>
       <a href="<?php echo $logoutUrl; ?>">Logout</a>
     <?php else: ?>
       <div>
         Login using OAuth 2.0 handled by the PHP SDK:
         <a href="<?php echo $loginUrl; ?>">Login with Facebook</a>
       </div>
-    <?php endif ?>
-
-    <h3>Welcome to Split Even</h3>
-    
-    <?php if ($user): ?>
-      <h3><?php echo $user['name']; ?></h3>
-      <img src="https://graph.facebook.com/<?php echo $user; ?>/picture">
-    <?php else: ?>
-      <strong><em>You are not Connected.</em></strong>
     <?php endif ?>
   </body>
 </html>
