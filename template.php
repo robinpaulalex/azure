@@ -98,7 +98,7 @@
             function newInvite(){
                  var receiverUserIds = FB.ui({ 
                         method : 'apprequests',
-                        message: 'come on man checkout my application. visit http://thinkdiff.net',
+                        message: 'Checkout SplitEven',
                  },
                  function(receiverUserIds) {
                           console.log("IDS : " + receiverUserIds.request_ids);
