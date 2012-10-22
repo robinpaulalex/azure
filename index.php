@@ -99,7 +99,7 @@ if ($user) {
 	  
       <img src="https://graph.facebook.com/<?php echo $user; ?>/picture">
     <div>
-	<pre><?php foreach ($friends as $frns)	{ echo $frns['name']; } ?></pre>
+	<pre><?php echo $friends['name'] ?></pre>
 	</div>
 	
 	<?php else: ?>
