@@ -76,7 +76,7 @@
                 }); */
             }
             function publishStream(){
-                streamPublish("Stream Publish", 'Now Split bills easily among your friends here on Facebook ', 'Check it out',"SplitEven");
+                streamPublish("Stream Publish", 'Now Split bills easily among your friends here on Facebook ','http://apps.facebook.com/spliteven/' 'Check it out',"SplitEven");
             }
             function increaseIframeSize(w,h){
                 var obj =   new Object;
