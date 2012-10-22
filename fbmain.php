@@ -1,17 +1,17 @@
 <?php
-    //facebook application configuration -mahmud
-    $fbconfig['appid' ] = "";
-    $fbconfig['secret'] = "";
+    //facebook application configuration 
+    $fbconfig['appid' ] = "451970521512909";
+    $fbconfig['secret'] = "13c15fa10074aaeae63b12221138471f";
 
-    $fbconfig['baseUrl']    =   "";// "http://thinkdiff.net/demo/newfbconnect1/iframe/sdk3";
-    $fbconfig['appBaseUrl'] =   "";// "http://apps.facebook.com/thinkdiffdemo";
+    $fbconfig['baseUrl']    =   "http://splittest.azurewebsites.net/";
+    $fbconfig['appBaseUrl'] =   "http://apps.facebook.com/spliteven/";
 
     
     /* 
      * If user first time authenticated the application facebook
      * redirects user to baseUrl, so I checked if any code passed
      * then redirect him to the application url 
-     * -mahmud
+     * 
      */
     if (isset($_GET['code'])){
         header("Location: " . $fbconfig['appBaseUrl']);
