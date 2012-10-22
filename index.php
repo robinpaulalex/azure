@@ -105,7 +105,8 @@ if ($user) {
 	echo "<br> Friends collage<br><br>";
 	foreach($friends['data'] as $frns)
 	{
-	echo "<img src="\"https://graph.facebook.com/".$frns['id']."/picture\"" title="\"".$frns['name']."\"/">"";
+	//echo "<img src="\"https://graph.facebook.com/".$frns['id']."/picture"\"" title="\"".$frns['name']."\"/">"";
+	echo "<br>$frns['name']<br>"
 	}
 	?>
 	</div>
