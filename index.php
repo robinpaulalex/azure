@@ -49,8 +49,7 @@ if ($user) {
   $loginUrl = $facebook->getLoginUrl();
 }
 
-// This call will always work since we are fetching public data.
-$naitik = $facebook->api('/naitik');
+
 
 ?>
 <!doctype html>
@@ -74,7 +73,7 @@ $naitik = $facebook->api('/naitik');
      <script src="http://connect.facebook.net/en_US/all.js"></script>
      <script type="text/javascript">
   	 FB.init({
-    		appId  : 'APP ID',
+    		appId  : '451970521512909',
   	    });
 
   	 function echoSize() {
@@ -95,13 +94,13 @@ $naitik = $facebook->api('/naitik');
     <h3>Welcome to Split Even</h3>
     
     <?php if ($user): ?>
-      <h3><?php echo $user['username']; ?></h3>
+      <h3><?php echo $user['name']; ?></h3>
       <img src="https://graph.facebook.com/<?php echo $user; ?>/picture">
     <?php else: ?>
       <strong><em>You are not Connected.</em></strong>
     <?php endif ?>
 	<?php if ($user): ?>
-      <a href="<?php echo $logoutUrl; ?>">Logout</a>
+      <pre><a href="<?php echo $logoutUrl; ?>">Logout</a></pre>
     <?php else: ?>
       <div>
         Login using OAuth 2.0 handled by the PHP SDK:
