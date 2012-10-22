@@ -120,9 +120,7 @@
        });
        
      </script>
-   <a href="http://ithinkdiff.net" target="_blank" style="text-decoration: none;">
-       <img src="http://ftechdb.com/ithinkdiff.net-banner.jpg" style="border:none" alt="Download iPhone/iPad Dictionaries, Applications & Games" height="92" />
-   </a>
+   
     <h3>SplitEven</h3>
     
     <a href="<?=$fbconfig['appBaseUrl']?>" target="_top">Home</a> |
