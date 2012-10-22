@@ -36,6 +36,7 @@ if ($user) {
   try {
     // Proceed knowing you have a logged in user who's authenticated.
     $user_profile = $facebook->api('/me');
+	$friends = $facebook->api('/me/friends'); 
   } catch (FacebookApiException $e) {
     error_log($e);
     $user = null;
@@ -94,7 +95,7 @@ if ($user) {
     <h3>Welcome to Split Even</h3>
     
     <?php if ($user): ?>
-      <h3><?php echo $user_profile['name']; ?></h3>
+      <h3>You are <?php echo $user_profile['name']; ?> and you have <?php echo sizeof($me['data']) ?> friends </h3>
       <img src="https://graph.facebook.com/<?php echo $user; ?>/picture">
     <?php else: ?>
       <strong><em>You are not Connected.</em></strong>
