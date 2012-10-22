@@ -23,29 +23,90 @@ $facebook = new Facebook(array(
   'secret' => '13c15fa10074aaeae63b12221138471f',
 ));
 
-	if ($facebook->getSession()) {
-    $user = $facebook->getUser();
-	$uid = $facebook->getUser();
-	$me = $facebook->api('/me/friends');
-	echo "<br>Total friends".sizeof($me['data'])."<br>";
-	
-	echo "<br> Friends collage<br><br>";
-	foreach($me['data'] as $frns)
-	{
-	echo "<img src="\"https://graph.facebook.com/".$frns['id']."/picture\"" title="\"".$frns['name']."\"/">";
-	
+// Get User ID
+$user = $facebook->getUser();
+
+// We may or may not have this data based on whether the user is logged in.
+//
+// If we have a $user id here, it means we know the user is logged into
+// Facebook, but we don't know if the access token is valid. An access
+// token is invalid if the user logged out of Facebook.
+
+if ($user) {
+  try {
+    // Proceed knowing you have a logged in user who's authenticated.
+    $user_profile = $facebook->api('/me');
+  } catch (FacebookApiException $e) {
+    error_log($e);
+    $user = null;
+  }
 }
 
-	
-	echo "<br><br><br>	By <br><a href="\"http://facebook.com/mjeyaganesh\""><img src="\"https://graph.facebook.com/1147530774/picture\"" title="\"Jeyaganesh\"/"></a>";
-
-	}
-	else {
-	$loginUrl = "https://graph.facebook.com/oauth/authorize?type=user_agent&display=page&client_id=APPID
-	&redirect_uri=http://apps.facebook.com/CANVAS URL/
-	&scope=user_photos"; 
-	echo '<fb:redirect url="' . $loginUrl . '"></fb:redirect>';  
+// Login or logout url will be needed depending on current user state.
+if ($user) {
+  $logoutUrl = $facebook->getLogoutUrl();
+} else {
+  $loginUrl = $facebook->getLoginUrl();
 }
 
+// This call will always work since we are fetching public data.
+$naitik = $facebook->api('/naitik');
 
 ?>
+<!doctype html>
+<html xmlns:fb="http://www.facebook.com/2008/fbml">
+  <head>
+    <title>SplitEven</title>
+    <style>
+      body {
+        font-family: 'Lucida Grande', Verdana, Arial, sans-serif;
+      }
+      h1 a {
+        text-decoration: none;
+        color: #3b5998;
+      }
+      h1 a:hover {
+        text-decoration: underline;
+      }
+    </style>
+  </head>
+  <body>
+     <script src="http://connect.facebook.net/en_US/all.js"></script>
+     <script type="text/javascript">
+  	 FB.init({
+    		appId  : 'APP ID',
+  	    });
+
+  	 function echoSize() {
+    	      document.getElementById('output').innerHTML = 
+                 "HTML Content Width: " + window.innerWidth + 
+                 " Height: " + window.innerHeight;
+    	      console.log(window.innerWidth + ' x ' + window.innerHeight);
+  	    }
+
+	   echoSize();
+  	   window.onresize = echoSize;
+     </script>
+	
+	<h1>SplitEven</h1>
+
+    
+
+    <h3>Welcome to Split Even</h3>
+    
+    <?php if ($user): ?>
+      <h3><?php echo $user['username']; ?></h3>
+      <img src="https://graph.facebook.com/<?php echo $user; ?>/picture">
+    <?php else: ?>
+      <strong><em>You are not Connected.</em></strong>
+    <?php endif ?>
+	<?php if ($user): ?>
+      <a href="<?php echo $logoutUrl; ?>">Logout</a>
+    <?php else: ?>
+      <div>
+        Login using OAuth 2.0 handled by the PHP SDK:
+        <a href="<?php echo $loginUrl; ?>">Login with Facebook</a>
+      </div>
+    <?php endif ?>
+  </body>
+</html>
